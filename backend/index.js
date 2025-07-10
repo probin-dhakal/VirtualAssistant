@@ -13,7 +13,7 @@ const port = process.env.port
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://virtual-assistant-theta-seven.vercel.app/",
     credentials: true
 }))
 app.use("/api/auth", authRouter);
