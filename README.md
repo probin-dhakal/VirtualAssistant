@@ -1,7 +1,8 @@
 # 🤖 Virtual AI Assistant
 
-![Demo](https://via.placeholder.com/800x500.png?text=Virtual+AI+Assistant+Demo) 
-*(Replace with actual screenshot)*
+![Demo]
+<img width="1440" height="900" alt="Screenshot 2025-07-11 at 5 55 33 PM" src="https://github.com/user-attachments/assets/9fdf48eb-da72-413f-b355-0c36e626c97b" />
+
 
 A voice-enabled virtual assistant with natural language processing powered by Google Gemini AI, featuring personalized avatars and smart command handling.
 
