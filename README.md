@@ -1,8 +1,6 @@
 # 🤖 Virtual AI Assistant
 
-![Demo]
-<img width="1440" height="900" alt="Screenshot 2025-07-11 at 5 55 33 PM" src="https://github.com/user-attachments/assets/9fdf48eb-da72-413f-b355-0c36e626c97b" />
-
+![Demo](https://github.com/user-attachments/assets/9fdf48eb-da72-413f-b355-0c36e626c97b)
 
 A voice-enabled virtual assistant with natural language processing powered by Google Gemini AI, featuring personalized avatars and smart command handling.
 
@@ -18,16 +16,17 @@ A voice-enabled virtual assistant with natural language processing powered by Go
 - **Interaction History** tracking
 
 ## 🛠 Tech Stack
-**Frontend**:  
+
+**Frontend**  
 ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react) 
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css)
 
-**Backend**:  
+**Backend**  
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js) 
 ![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express) 
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat&logo=mongodb)
 
-**APIs**:  
+**APIs**  
 ![Google Gemini](https://img.shields.io/badge/Google_Gemini-4285F4?style=flat&logo=google) 
 ![Cloudinary](https://img.shields.io/badge/Cloudinary-3448C5?style=flat&logo=cloudinary)
 
@@ -39,15 +38,15 @@ A voice-enabled virtual assistant with natural language processing powered by Go
 - Google Gemini API Key
 - Cloudinary account
 
-###  Setup Backend
+### 🔧 Backend Setup
 ```bash
-git clone https://github.com/your-username/virtual-assistant-backend.git
-cd virtual-assistant-backend
+git clone https://github.com/probin-dhakal/VirtualAssistant.git
+cd VirtualAssistant/backend
 npm install
 
 # Create .env file
 cat > .env <<EOF
-PORT=5000
+PORT=8000
 MONGODB_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
 CLOUDINARY_CLOUD_NAME=your_cloud_name
@@ -58,14 +57,65 @@ EOF
 
 npm start
 
+### 🔧 Frontend Setup
 
-###  Setup Frontend
-cd virtual-assistant-frontend
+cd ../frontend
 npm install
 
-echo "VITE_SERVER_URL=http://localhost:5000" > .env
+echo "VITE_SERVER_URL=http://localhost:8000" > .env
 npm run dev
 
+
+### 🔧 Folder Structure
+
+VirtualAssistant/
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   └── server.js
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   ├── pages/
+    │   └── main.jsx
+    └── public/
+
+🤝 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Fork the repository
+
+Create your feature branch (git checkout -b feature/yourFeature)
+
+Commit your changes (git commit -m 'Add your feature')
+
+Push to the branch (git push origin feature/yourFeature)
+
+Open a pull request
+
+
 📜 License
-MIT
+MIT License
+
+Copyright (c) 2025 Probin Dhakal
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
