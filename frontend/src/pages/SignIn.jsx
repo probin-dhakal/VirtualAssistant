@@ -10,17 +10,20 @@ const SignIn = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const { serverUrl, userData, setUserData } = useContext(userDataContext);
   const navigateTo = useNavigate();
 
   const handleSignin = async (e) => {
     e.preventDefault();
 
-    // Basic validation
     if (!email || !password) {
       toast.error("Please fill all fields");
       return;
     }
+
+    setLoading(true);
 
     try {
       const result = await axios.post(
@@ -28,11 +31,11 @@ const SignIn = () => {
         { email, password },
         { withCredentials: true }
       );
-      setUserData(result.data)
+      setUserData(result.data);
       toast.success("Login successful!");
-      navigateTo("/"); // redirect to home/dashboard after successful login
+      navigateTo("/");
     } catch (error) {
-      setUserData(null)
+      setUserData(null);
       console.log("Error while login", error);
       if (
         error.response &&
@@ -43,6 +46,8 @@ const SignIn = () => {
       } else {
         toast.error("Login failed. Please try again.");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -92,9 +97,14 @@ const SignIn = () => {
 
         <button
           type="submit"
-          className="min-w-[150px] h-[52px] bg-white rounded-full text-black text-[18px] font-semibold mt-[10px]"
+          className={`min-w-[150px] h-[52px] rounded-full text-[18px] font-semibold mt-[10px] ${
+            loading
+              ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+              : "bg-white text-black"
+          }`}
+          disabled={loading}
         >
-          Sign In
+          {loading ? "Signing In..." : "Sign In"}
         </button>
 
         <hr className="w-full border-gray-400" />
