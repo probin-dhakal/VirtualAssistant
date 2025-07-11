@@ -26,10 +26,10 @@ export const signup = async (req, res) => {
     const token = await generateToken(newUser._id);
 
     // Set cookie
-    res.cookie("token", token, {
+      res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // change to true in production with HTTPS
-      sameSite: "strict",
+      secure: true, // change to true in production with HTTPS
+      sameSite: "None",
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     });
 
@@ -70,8 +70,8 @@ export const login = async (req, res) => {
     // Set cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // change to true in production with HTTPS
-      sameSite: "strict",
+      secure: true, // change to true in production with HTTPS
+      sameSite: "None",
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     });
 
