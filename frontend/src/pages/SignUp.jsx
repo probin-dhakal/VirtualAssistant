@@ -11,17 +11,20 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { serverUrl ,userData,setUserData} = useContext(userDataContext);
+  const [loading, setLoading] = useState(false);
+
+  const { serverUrl, userData, setUserData } = useContext(userDataContext);
   const navigateTo = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    // Basic validation
     if (!name || !email || !password) {
       toast.error("Please fill all fields");
       return;
     }
+
+    setLoading(true);
 
     try {
       const result = await axios.post(
@@ -31,15 +34,17 @@ const SignUp = () => {
       );
       setUserData(result.data);
       toast.success("Signup successful! Please sign in.");
-      navigateTo("/customize"); // redirect to sign-in after successful signup
+      navigateTo("/customize");
     } catch (error) {
-          setUserData(null);
+      setUserData(null);
       console.log("Error while signup", error);
       if (error.response && error.response.data && error.response.data.message) {
         toast.error(error.response.data.message);
       } else {
         toast.error("Signup failed. Please try again.");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -97,9 +102,14 @@ const SignUp = () => {
 
         <button
           type="submit"
-          className="min-w-[150px] h-[52px] bg-white rounded-full text-black text-[18px] font-semibold mt-[10px]"
+          className={`min-w-[150px] h-[52px] rounded-full text-[18px] font-semibold mt-[10px] ${
+            loading
+              ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+              : "bg-white text-black"
+          }`}
+          disabled={loading}
         >
-          Sign Up
+          {loading ? "Signing Up..." : "Sign Up"}
         </button>
 
         <hr className="w-full border-gray-400" />
